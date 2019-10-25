@@ -4,10 +4,14 @@
   </div>
 </template>
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-* {
-  background-image: linear-gradient(rgb(220, 21, 67), rgb(227, 36, 69), rgb(190, 25, 101));
-  font-family: 'Poppins', sans-serif;
-}
+<style lang="sass">
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap')
+@import "@/styles/style.sass"
+
+*
+  margin: 0
+  padding: 0
+  outline: none
+  box-sizing: border-box
+  font-family: 'Poppins', sans-serif
 </style>
