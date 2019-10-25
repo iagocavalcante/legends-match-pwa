@@ -1,6 +1,7 @@
 <template>
   <input
     class="legends-input"
+    :class="isRegister ? '-register' : ''"
     :type="type"
     :value="value"
     :name="name"
@@ -31,6 +32,11 @@ export default {
       required: false,
       default: ''
     },
+    isRegister: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     id: {
       type: String,
       required: false,
@@ -56,9 +62,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="sass" scoped>
-.legends-input
-  color: rgb(190, 25, 101)
+$purple: #633280
+
+.-register
+  width: 100%
+  border-radius: 5px
+  border: 2px solid $purple
 
 .legends-input:focus
-  outline: none
+  border-radius: 5px
+  box-shadow: 0 0 5px rgba(190, 25, 101, 1)
+  padding: 3px 0px 3px 10px
+  border: 1px solid rgb(190, 25, 101)
 </style>
