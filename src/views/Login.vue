@@ -43,12 +43,14 @@ export default {
 <style lang="sass" scoped>
 .home
   text-align: center
+  overflow-y: hidden
   height: 100vh
   width: 100vw
   display: table
   margin: 0 auto
   position: relative
   background: linear-gradient(-8deg, rgba(99, 50, 128, 0.98221) 0%, rgba(227, 46, 69, 1) 61%, rgba(220, 21, 67, 1) 100%)
+  background-image: linear-gradient(152deg, #dc1543, #e32445 19%, #be1965 46%, #633280 89%)
   &::before
     display: block
     content: ''

@@ -7,7 +7,7 @@
         <p class="-subtitle">{{ date }}</p>
       </div>
       <div class="-action" :class="status ? '' : '-action-width'">
-        <svg v-if="status" class="-menu" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12px" height="24px" x="0px" y="0px"
+        <svg v-if="status" class="-menu" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="24" x="0px" y="0px"
           fill="#633280" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
           <g>
             <g>
