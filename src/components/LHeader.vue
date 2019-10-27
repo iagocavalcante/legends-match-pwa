@@ -23,27 +23,34 @@ export default {
 <style lang="sass">
 .header
   display: flex
-  height: 37.333px
+  align-items: center
+  justify-content: space-between
 
   .-icon
     cursor: pointer
+    width: 20px
     margin-top: 5px
-    margin-left: 17.33px
     background-image: url('~@/assets/baseline-arrow_back-24px.png') no-repeat
 
   .-logo
-    margin: auto 10%
+    display: block
+    flex-grow: 1
+    overflow: hidden
+    text-align: center
+    text-overflow: ellipsis
+    white-space: nowrap
 
   .-legends
-    font-size: 26.66px
-    margin-bottom: 60px
+    font-size: 20px
     font-weight: 300
     color: rgb(190, 25, 101)
+    line-height: 1.5
     text-shadow: rgba(0, 0, 0, 0.2)
 
   .-match
     font-weight: bold
-    font-size: 26.66px
+    font-size: 20px
     color: rgb(99, 50, 128)
+    line-height: 1.5
     text-shadow: rgba(0, 0, 0, 0.2)
 </style>

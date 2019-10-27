@@ -3,19 +3,19 @@
     <div class="-login">
       <h1 class="-legends">LEGENDS<b class="-match">MATCH</b></h1>
       <div class="-form-input">
-        <LInput placeholder="Email"/>
+        <l-input placeholder="Email"/>
       </div>
       <div class="-form-input">
-        <LInput placeholder="Senha"/>
+        <l-input placeholder="Senha"/>
       </div>
       <div class="-form-button">
-        <LButton :buttonText="'entrar'"/>
+        <l-button :buttonText="'entrar'"/>
       </div>
       <div class="-forgot-password">
         <a class="link" href="/register">ou Esqueceu a senha? =[</a>  
       </div>
       <div class="-form-input -fixed-bottom">
-        <LButton :buttonClass="'btn-outlined'" @click="goTo('register')" :buttonText="'cadastre-se'"/>
+        <l-button :buttonClass="'btn-outlined'" @click="goTo('register')" :buttonText="'cadastre-se'"/>
       </div>
     </div>
   </div>
@@ -74,7 +74,16 @@ export default {
     right: 0
 
   .-legends
-    margin-bottom: 60px
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2)
+    font-family: Poppins
+    font-size: 36px
+    font-weight: 300
+    font-stretch: normal
+    font-style: normal
+    line-height: 1.53
+    letter-spacing: normal
+    color: #ffffff
+    margin-bottom: 65px
     font-weight: lighter
     color: #fff
     text-shadow: rgba(0, 0, 0, 0.2)
@@ -94,9 +103,9 @@ export default {
     padding-right:  10px
   
   .-form-button
-    margin-top: 42.66px
+    margin-top: 32px
 
   .-forgot-password
-    margin-top: 21.33px
+    margin-top: 16px
 
 </style>

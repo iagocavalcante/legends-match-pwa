@@ -17,15 +17,15 @@ export default {
 <style lang="sass" scoped>
 .wrapper-upload
   cursor: pointer
-  width: 160px
-  height: 160px
+  width: 120px
+  height: 120px
   border-radius: 13.33px
   background-color: #633280
   border: none
   color: #fff
   font-weight: 500
-  font-size: 21.33px
-  line-height: 20px
+  font-size: 16px
+  line-height: 0.94
 
   .-icon
     margin-top: 10px
