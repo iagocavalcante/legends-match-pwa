@@ -150,7 +150,6 @@ export default {
       -webkit-justify-content: flex-end
       -ms-flex-pack: end
       justify-content: flex-end
-      // width: 25vw
 
     .-action-width
       width: 15vw !important

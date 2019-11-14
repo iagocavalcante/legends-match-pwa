@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="baseline-sentiment_very_satisfied-24px" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <style>
+            .cls-1{fill:none}.cls-2{fill:#be1965}
+        </style>
+    </defs>
+    <path id="Path_85" d="M0 0h30v30H0z" class="cls-1" data-name="Path 85"/>
+    <circle id="Ellipse_11" cx="1.5" cy="1.5" r="1.5" class="cls-2" data-name="Ellipse 11" transform="translate(18 10.286)"/>
+    <circle id="Ellipse_12" cx="1.5" cy="1.5" r="1.5" class="cls-2" data-name="Ellipse 12" transform="translate(9 10.286)"/>
+    <path id="Path_86" d="M14.987 2A13 13 0 1 0 28 15 12.994 12.994 0 0 0 14.987 2zM15 25.4A10.4 10.4 0 1 1 25.4 15 10.4 10.4 0 0 1 15 25.4zm-6.5-7.8a7.1 7.1 0 0 0 6.5 5.2 7.1 7.1 0 0 0 6.5-5.2z" class="cls-2" data-name="Path 86"/>
+</svg>

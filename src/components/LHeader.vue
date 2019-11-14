@@ -1,6 +1,6 @@
 <template>
   <nav class="header">
-    <span @click="goBack()" class="-icon">
+    <span @click="goBack()" class="-icon" v-if="!disabled">
       <img src="~@/assets/baseline-arrow_back-24px.png" />
     </span>
     <div class="-logo">
@@ -12,6 +12,12 @@
 <script>
 export default {
   name: 'LHeader',
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     goBack () {
       this.$router.go(-1)
