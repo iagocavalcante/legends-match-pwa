@@ -1,7 +1,23 @@
 <template>
   <div class="match">
     <l-header :disabled="true" />
+    <div class="-pic">
+      
+    </div>
+    <div class="-national">
+      <img :src="require('@/assets/brazil.png')" />
+    </div>
     <div class="-info">
+      <div class="-name-age-national">
+        <p class="-name">Iago Angelim, 27</p>
+        <p class="-name -lastname">Cavalcante</p>
+      </div>
+      <div class="-play">
+        <l-chips class="-play-chips" :label="'CS:GO'"/>
+        <l-chips class="-play-chips" :label="'LOL'"/>
+        <l-chips class="-play-chips" :label="'FORTNITE'"/>
+        <l-chips class="-play-chips" :label="'PUBG'"/>
+      </div>
       <div class="-level">
         <div class="-friendly">
           <svg xmlns="http://www.w3.org/2000/svg" id="baseline-sentiment_very_satisfied-24px" width="30" height="30" viewBox="0 0 30 30">
@@ -19,19 +35,6 @@
           </svg>
           <l-chips class="-level-chips" :label="'professor'"/>
         </div>
-      </div>
-      <div class="-play">
-        <p class="-title">Joga</p>
-        <l-chips class="-play-chips" :label="'CS:GO'"/>
-        <l-chips class="-play-chips" :label="'LOL'"/>
-        <l-chips class="-play-chips" :label="'FORTNITE'"/>
-        <l-chips class="-play-chips" :label="'PUBG'"/>
-      </div>
-      <div class="-play">
-        <p class="-title">Características</p>
-        <l-chips class="-play-chips" :label="'ADCARRY'"/>
-        <l-chips class="-play-chips" :label="'snipper'"/>
-        <l-chips class="-play-chips" :label="'luker'"/>
       </div>
       <div class="-play">
         <p class="-title">A procura de</p>
@@ -68,12 +71,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.profile
+.match
+  .-national
+    position: absolute
+    left: 24px
+    margin-top: -20px
 
-  .-info
-    width: 355px
-    height: 500px
-    border-radius: 5px
+  .-pic
+    width: 93vw
+    height: 260px
+    border-top-left-radius: 5px
+    border-top-right-radius: 5px
     border: solid 1px #d6d6d6
     background-color: #ffffff
     margin-top: 41px
@@ -90,16 +98,21 @@ export default {
     -ms-flex: 2
     flex: 2
 
-    .-avatar
-      width: 120px
-      height: 120px
-      border-radius: 10px
-      border: 5px solid #633280
+  .-info
+    width: 93vw
+    height: 260px
+    border-bottom-right-radius: 5px
+    border-bottom-left-radius: 5px
+    border: solid 1px #d6d6d6
+    background-color: #ffffff
+    margin-left: 13px
+    padding-left: 10px
 
     .-name-age-national
       margin-left: 19px
 
       .-name
+        margin-top: 10px
         font-size: 26px
         font-weight: 300
         font-stretch: normal
@@ -150,7 +163,7 @@ export default {
         background-color: #be1965 !important
 
     .-play
-      margin-top: 30px
+      margin-top: 12px
       
       .-play-chips
         margin-right: 10px
