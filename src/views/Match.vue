@@ -1,7 +1,23 @@
 <template>
   <div class="match">
     <l-header :disabled="true" />
+    <div class="-pic">
+      
+    </div>
+    <div class="-national">
+      <img :src="require('@/assets/brazil.png')" />
+    </div>
     <div class="-info">
+      <div class="-name-age-national">
+        <p class="-name">Iago Angelim, 27</p>
+        <p class="-name -lastname">Cavalcante</p>
+      </div>
+      <div class="-play">
+        <l-chips class="-play-chips" :label="'CS:GO'"/>
+        <l-chips class="-play-chips" :label="'LOL'"/>
+        <l-chips class="-play-chips" :label="'FORTNITE'"/>
+        <l-chips class="-play-chips" :label="'PUBG'"/>
+      </div>
       <div class="-level">
         <div class="-friendly">
           <svg xmlns="http://www.w3.org/2000/svg" id="baseline-sentiment_very_satisfied-24px" width="30" height="30" viewBox="0 0 30 30">
@@ -21,30 +37,42 @@
         </div>
       </div>
       <div class="-play">
-        <p class="-title">Joga</p>
-        <l-chips class="-play-chips" :label="'CS:GO'"/>
-        <l-chips class="-play-chips" :label="'LOL'"/>
-        <l-chips class="-play-chips" :label="'FORTNITE'"/>
-        <l-chips class="-play-chips" :label="'PUBG'"/>
-      </div>
-      <div class="-play">
-        <p class="-title">Características</p>
-        <l-chips class="-play-chips" :label="'ADCARRY'"/>
-        <l-chips class="-play-chips" :label="'snipper'"/>
-        <l-chips class="-play-chips" :label="'luker'"/>
-      </div>
-      <div class="-play">
         <p class="-title">A procura de</p>
         <l-chips class="-play-chips" :label="'top laner'"/>
         <l-chips class="-play-chips" :label="'duo'"/>
+      </div>
+    </div>
+    <div class="-decision">
+      <l-fab-button class="-cancel" :color="'-cancel'" :cancel="true" />
+      <l-fab-button :color="'-confirm'" :confirm="true" />
+    </div>
+    <div class="-menu">
+      <div class="-menu-buttons">
+        <div class="-profile">
+          <svg xmlns="http://www.w3.org/2000/svg" id="baseline-face-24px_1_" width="22" height="22" data-name="baseline-face-24px (1)" viewBox="0 0 22 22">
+            <path id="Path_77" d="M8.3 10.775A1.125 1.125 0 1 0 9.425 11.9 1.125 1.125 0 0 0 8.3 10.775zm5.4 0a1.125 1.125 0 1 0 1.125 1.125 1.125 1.125 0 0 0-1.125-1.125zM11 2a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 16.2A7.21 7.21 0 0 1 3.8 11a7.3 7.3 0 0 1 .045-.774 9.056 9.056 0 0 0 4.689-4.833A8.977 8.977 0 0 0 15.878 9.2a8.784 8.784 0 0 0 2.022-.234A7.189 7.189 0 0 1 11 18.2z" fill="#fff" data-name="Path 77"/>
+            <path id="Path_78" d="M0 0h22v22H0z" fill="none" data-name="Path 78"/>
+          </svg>
+          <p class="-text-color">PERFIL</p>
+        </div>
+        <div class="-fab-menu">
+          <l-fab-button :menu="true"/>
+        </div>
+        <div class="-chat">
+          <svg xmlns="http://www.w3.org/2000/svg" id="baseline-chat-24px" width="22" height="22" viewBox="0 0 22 22">
+            <path id="Path_79" d="M18.2 2H3.8a1.8 1.8 0 0 0-1.791 1.8L2 20l3.6-3.6h12.6a1.805 1.805 0 0 0 1.8-1.8V3.8A1.805 1.805 0 0 0 18.2 2zM5.6 8.3h10.8v1.8H5.6zm7.2 4.5H5.6V11h7.2zm3.6-5.4H5.6V5.6h10.8z" fill="#fff" data-name="Path 79"/>
+            <path id="Path_80" d="M0 0h22v22H0z" fill="none" data-name="Path 80"/>
+          </svg>
+          <p class="-text-color">CHAT</p>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import LButton from '@/components/LButton'
 import LChips from '@/components/LChips'
+import LFabButton from '@/components/LFabButton'
 import LHeader from '@/components/LHeader'
 import LInput from '@/components/LInput'
 import LListView from '@/components/LListView'
@@ -55,8 +83,8 @@ import LUploadButton from '@/components/LUploadButton'
 export default {
   name: 'Profile',
   components: {
-    LButton,
     LChips,
+    LFabButton,
     LHeader,
     LInput,
     LListView,
@@ -68,12 +96,17 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.profile
+.match
+  .-national
+    position: absolute
+    left: 20px
+    margin-top: -20px
 
-  .-info
-    width: 355px
-    height: 500px
-    border-radius: 5px
+  .-pic
+    width: 93vw
+    height: 260px
+    border-top-left-radius: 5px
+    border-top-right-radius: 5px
     border: solid 1px #d6d6d6
     background-color: #ffffff
     margin-top: 41px
@@ -90,16 +123,20 @@ export default {
     -ms-flex: 2
     flex: 2
 
-    .-avatar
-      width: 120px
-      height: 120px
-      border-radius: 10px
-      border: 5px solid #633280
+  .-info
+    width: 93vw
+    padding-bottom: 10px
+    border-bottom-right-radius: 5px
+    border-bottom-left-radius: 5px
+    border: solid 1px #d6d6d6
+    background-color: #ffffff
+    margin-left: 13px
+    padding-left: 10px
 
     .-name-age-national
-      margin-left: 19px
 
       .-name
+        margin-top: 10px
         font-size: 26px
         font-weight: 300
         font-stretch: normal
@@ -112,11 +149,7 @@ export default {
       .-lastname
         font-weight: 600
 
-      .-national
-    
     @media (max-width: 360px)
-      .-name-age-national
-        margin-left: 10px
     
       .-name
         font-size: 26px
@@ -130,8 +163,6 @@ export default {
       
       .-lastname
         font-weight: 600
-
-      .-national
 
     .-level
       display: flex
@@ -150,7 +181,7 @@ export default {
         background-color: #be1965 !important
 
     .-play
-      margin-top: 30px
+      margin-top: 12px
       
       .-play-chips
         margin-right: 10px
@@ -167,4 +198,51 @@ export default {
         text-transform: uppercase
         color: #be1965
 
+  .-decision
+    display: flex
+    align-content: center
+    justify-content: center
+    margin: 35px auto
+  
+    .-cancel
+      margin-right: 18px
+
+  .-menu
+    display: flex
+    align-content: center
+    .-menu-buttons
+      display: flex
+      position: relative
+      margin: 0 auto
+      width: 350px
+      height: 40px
+      border-radius: 200px
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16)
+      background-color: #633280
+      justify-content: space-between
+      
+      .-text-color
+        color: #fff
+        font-size: 18px
+        font-weight: normal
+        font-stretch: normal
+        font-style: normal
+        line-height: 1.5
+        letter-spacing: normal
+        text-align: left
+        margin-left: 6px
+        margin-top: -3px
+
+      .-profile
+        display: inline-flex
+        padding: 10px
+
+      .-fab-menu
+        position: absolute
+        top: -7px
+        left: 155px
+
+      .-chat
+        display: inline-flex
+        padding: 10px
 </style>
