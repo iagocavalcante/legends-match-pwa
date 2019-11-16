@@ -5,7 +5,7 @@
       
     </div>
     <div class="-national">
-      <img :src="require('@/assets/brazil.png')" />
+      <img :src="require('@/assets/brazil.svg')" />
     </div>
     <div class="-info">
       <div class="-name-age-national">
@@ -235,7 +235,7 @@ export default {
 
       .-fab-menu
         position: absolute
-        top: -7px
+        top: -9px
         left: 147px
 
       .-chat

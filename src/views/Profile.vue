@@ -7,7 +7,7 @@
         <p class="-name">Iago Angelim, 27</p>
         <p class="-name -lastname">Cavalcante</p>
         <div class="-national">
-          <img class="" src="~@/assets/brazil.png"/>
+          <img class="" src="~@/assets/brazil.svg"/>
         </div>
       </div>
       <div class="-level">
