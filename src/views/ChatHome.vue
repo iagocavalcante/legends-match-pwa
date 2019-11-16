@@ -31,7 +31,7 @@
               </svg>
             </div>
             <div class="-menu">
-              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="24" x="0px" y="0px"
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="20" x="0px" y="0px"
                 fill="#633280" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
                 <g>
                   <g>
@@ -258,15 +258,18 @@ p
   .-fav
     color: #ffcb64
     margin-right: 16px
+    cursor: pointer
   
   .-no-fav
     width: 20px
     height: 20px
     color: #a1a1a1
     margin-right: 16px
+    cursor: pointer
   
   .-menu
     color: #be1965
+    cursor: pointer
 
 .-friend .status.away
   background: #ffce54
