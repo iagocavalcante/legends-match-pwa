@@ -74,11 +74,6 @@
 import LChips from '@/components/LChips'
 import LFabButton from '@/components/LFabButton'
 import LHeader from '@/components/LHeader'
-import LInput from '@/components/LInput'
-import LListView from '@/components/LListView'
-import LSelect from '@/components/LSelect'
-import LTextArea from '@/components/LTextArea'
-import LUploadButton from '@/components/LUploadButton'
 
 export default {
   name: 'Profile',
@@ -86,11 +81,6 @@ export default {
     LChips,
     LFabButton,
     LHeader,
-    LInput,
-    LListView,
-    LSelect,
-    LTextArea,
-    LUploadButton
   },
 }
 </script>
