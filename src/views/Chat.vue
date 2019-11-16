@@ -61,7 +61,7 @@
 import LHeader from '@/components/LHeader'
 
 export default {
-  name: 'Profile',
+  name: 'Chat',
   components: {
     LHeader
   }
@@ -80,7 +80,7 @@ $gray: #92959E
   background: #F2F5F8
   border-top-right-radius: 5px
   border-bottom-right-radius: 5px
-  
+  height: 92.8vh
   color: #434651
 
   ul
@@ -118,10 +118,10 @@ $gray: #92959E
 
   
   .chat-history
-    padding: 30px 30px 20px
+    padding: 75px 30px 20px
     border-bottom: 2px solid white
     overflow-y: scroll
-    height: 84vh
+    height: 92.8vh
     
     .message-data
       margin-bottom: 15px

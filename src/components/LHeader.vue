@@ -28,10 +28,18 @@ export default {
 
 <style lang="sass">
 .header
+  position: fixed
+  top: 0
+  width: 100vw
   display: flex
   align-items: center
   justify-content: space-between
-  margin-top: 10px
+  padding-top: 5px
+  background: #fff
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16)
+  padding-bottom: 5px
+  height: 53px
+  z-index: 1
 
   .-icon
     cursor: pointer

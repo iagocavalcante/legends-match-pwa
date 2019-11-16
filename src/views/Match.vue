@@ -48,7 +48,7 @@
     </div>
     <div class="-menu">
       <div class="-menu-buttons">
-        <div class="-profile">
+        <div class="-profile" @click="goTo('profile')">
           <svg xmlns="http://www.w3.org/2000/svg" id="baseline-face-24px_1_" width="22" height="22" data-name="baseline-face-24px (1)" viewBox="0 0 22 22">
             <path id="Path_77" d="M8.3 10.775A1.125 1.125 0 1 0 9.425 11.9 1.125 1.125 0 0 0 8.3 10.775zm5.4 0a1.125 1.125 0 1 0 1.125 1.125 1.125 1.125 0 0 0-1.125-1.125zM11 2a9 9 0 1 0 9 9 9 9 0 0 0-9-9zm0 16.2A7.21 7.21 0 0 1 3.8 11a7.3 7.3 0 0 1 .045-.774 9.056 9.056 0 0 0 4.689-4.833A8.977 8.977 0 0 0 15.878 9.2a8.784 8.784 0 0 0 2.022-.234A7.189 7.189 0 0 1 11 18.2z" fill="#fff" data-name="Path 77"/>
             <path id="Path_78" d="M0 0h22v22H0z" fill="none" data-name="Path 78"/>
@@ -58,7 +58,7 @@
         <div class="-fab-menu">
           <l-fab-button :menu="true"/>
         </div>
-        <div class="-chat">
+        <div class="-chat" @click="goTo('chat')">
           <svg xmlns="http://www.w3.org/2000/svg" id="baseline-chat-24px" width="22" height="22" viewBox="0 0 22 22">
             <path id="Path_79" d="M18.2 2H3.8a1.8 1.8 0 0 0-1.791 1.8L2 20l3.6-3.6h12.6a1.805 1.805 0 0 0 1.8-1.8V3.8A1.805 1.805 0 0 0 18.2 2zM5.6 8.3h10.8v1.8H5.6zm7.2 4.5H5.6V11h7.2zm3.6-5.4H5.6V5.6h10.8z" fill="#fff" data-name="Path 79"/>
             <path id="Path_80" d="M0 0h22v22H0z" fill="none" data-name="Path 80"/>
@@ -76,12 +76,17 @@ import LFabButton from '@/components/LFabButton'
 import LHeader from '@/components/LHeader'
 
 export default {
-  name: 'Profile',
+  name: 'Match',
   components: {
     LChips,
     LFabButton,
     LHeader,
   },
+  methods: {
+    goTo (route) {
+      this.$router.push({ name: route })
+    }
+  }
 }
 </script>
 
@@ -99,7 +104,7 @@ export default {
     border-top-right-radius: 5px
     border: solid 1px #d6d6d6
     background-color: #ffffff
-    margin-top: 41px
+    margin-top: 82px
     margin-left: 13px
     display: -webkit-box
     display: -webkit-flex
@@ -224,15 +229,17 @@ export default {
         margin-top: -3px
 
       .-profile
+        cursor: pointer
         display: inline-flex
         padding: 10px
 
       .-fab-menu
         position: absolute
         top: -7px
-        left: 155px
+        left: 147px
 
       .-chat
+        cursor: pointer
         display: inline-flex
         padding: 10px
 </style>
