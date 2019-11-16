@@ -9,7 +9,7 @@
         <l-input placeholder="Senha"/>
       </div>
       <div class="-form-button">
-        <l-button :buttonText="'entrar'"/>
+        <l-button :buttonText="'entrar'" @click="goTo('match')"/>
       </div>
       <div class="-forgot-password">
         <a class="link" href="/register">ou Esqueceu a senha? =[</a>  

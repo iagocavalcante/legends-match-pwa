@@ -7,7 +7,48 @@
         <p class="-subtitle">{{ date }}</p>
       </div>
       <div class="-action" :class="status ? '' : '-action-width'">
-        <i v-if="status" class="-menu fas fa-ellipsis-v"></i>
+        <svg v-if="status" class="-menu" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="24" x="0px" y="0px"
+          fill="#633280" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+          <g>
+            <g>
+              <g>
+                <circle cx="256" cy="256" r="64"/>
+                <circle cx="256" cy="448" r="64"/>
+                <circle cx="256" cy="64" r="64"/>
+              </g>
+            </g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+          <g>
+          </g>
+        </svg>
         <slot v-else name="connect"></slot>
       </div>
     </li>

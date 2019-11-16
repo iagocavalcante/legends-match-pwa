@@ -6,187 +6,44 @@
         <l-chips label="Conversas Ativas"></l-chips>
       </div>     
       <div id="friends">
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
+        
+        <div class="-friend" v-for="friend in friends" :key="friend.id">
+          <div class="clickable" @click="goToChat(friend.id)">
+            <img :src="friend.profilePic" />
+            <div class="-notification" v-if="friend.notification > 0">
+              <span>{{ friend.notification }}</span>
+            </div>
+            <p>
+              <strong>{{ friend.fullName }}</strong>
+              <br>
+              <span>{{ friend.nickname }}</span>
+            </p>
           </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
           <div class="status">
-            <i class="-fav fas fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-fav fas fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-no-fav far fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-no-fav far fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-no-fav far fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-no-fav far fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-no-fav far fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-no-fav far fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/3_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-no-fav far fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/4_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-no-fav far fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
-          </div>
-        </div>
-        
-        <div class="-friend" @click="goToChat(1)">
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/5_copy.jpg" />
-          <div class="-notification">
-            <span>10</span>
-          </div>
-          <p>
-            <strong>Miro Badev</strong>
-            <br>
-            <span>nickname</span>
-          </p>
-          <div class="status">
-            <i class="-fav fas fa-star"></i>
-            <i class="-menu fas fa-ellipsis-v"></i>
+            <div class="-fav" v-if="friend.isFav">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 51 48">
+                <path fill="#F8D64E" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+              </svg>
+            </div>
+            <div class="-no-fav" v-else>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 51 48">
+                <path fill="none" stroke="#a1a1a1" d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+              </svg>
+            </div>
+            <div class="-menu">
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="12" height="24" x="0px" y="0px"
+                fill="#633280" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+                <g>
+                  <g>
+                    <g>
+                      <circle cx="256" cy="256" r="64"/>
+                      <circle cx="256" cy="448" r="64"/>
+                      <circle cx="256" cy="64" r="64"/>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </div>
           </div>
         </div>
           
@@ -206,6 +63,90 @@ export default {
     LHeader,
     LChips
   },
+  data: () => ({
+    friends: [
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: true,
+        id: 1,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 10
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: false,
+        id: 2,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 0
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: true,
+        id: 3,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 25
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: false,
+        id: 4,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 5
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: true,
+        id: 5,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 0
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: false,
+        id: 6,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 10
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: true,
+        id: 7,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 10
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: false,
+        id: 8,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 10
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: true,
+        id: 9,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 10
+      },
+      {
+        fullName: 'Teste Json',
+        nickname: 'Rellikeht',
+        isFav: false,
+        id: 10,
+        profilePic: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg',
+        notification: 10
+      }
+    ]
+  }),
   methods: {
     goToChat (id) {
       this.$router.push({ path: `chat/${id}` })
@@ -238,14 +179,12 @@ p
 
 
 .-friend
-  cursor: pointer
   height: 84px
   border-bottom: 1px solid #e7ebee       
   position: relative
 
-.-friend:hover
-  background: #f1f4f6
-  cursor: pointer
+  .clickable
+    cursor: pointer
 
 .-friend img
   width: 54px
@@ -254,21 +193,6 @@ p
   margin: 15px
   float: left
   border: 3px solid #be1965
-
-.-friend img[data-count]:not([data-count=""]):not([data-count="0"]):after
-	position: absolute
-	right: 0%
-	top: 1%
-	content: attr(data-count)
-	font-size: 30%
-	padding: .4em
-	border-radius: 2em
-	line-height: .75em
-	color: white
-	background: rgb(255, 0, 0)
-	text-align: center
-	min-width: 1.5em
-	font-weight: bold
 
 .-notification
 
@@ -284,10 +208,7 @@ p
     font-size: 13px
     font-weight: 300
     font-stretch: normal
-    font-style: normal
-    line-height: 1.54
-    letter-spacing: normal
-    text-align: left
+    text-align: center
     color: #ffffff
     text-decoration: none
 
@@ -331,7 +252,6 @@ p
   height: 9px
   position: absolute
   top: 31px
-  color: red
   right: 55px
   justify-content: space-between
   
@@ -340,6 +260,8 @@ p
     margin-right: 16px
   
   .-no-fav
+    width: 20px
+    height: 20px
     color: #a1a1a1
     margin-right: 16px
   
