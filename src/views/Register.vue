@@ -207,7 +207,7 @@ export default {
   background-color: #f5f5f5
 
   .-upload
-    margin-top: 54.66px
+    padding-top: 109.32px
     margin-bottom: 40px
 
   .-select

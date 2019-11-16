@@ -51,26 +51,14 @@
 </template>
 
 <script>
-import LButton from '@/components/LButton'
 import LChips from '@/components/LChips'
 import LHeader from '@/components/LHeader'
-import LInput from '@/components/LInput'
-import LListView from '@/components/LListView'
-import LSelect from '@/components/LSelect'
-import LTextArea from '@/components/LTextArea'
-import LUploadButton from '@/components/LUploadButton'
 
 export default {
   name: 'Profile',
   components: {
-    LButton,
     LChips,
-    LHeader,
-    LInput,
-    LListView,
-    LSelect,
-    LTextArea,
-    LUploadButton
+    LHeader
   },
 }
 </script>
@@ -79,7 +67,7 @@ export default {
 .profile
 
   .-info
-    margin-top: 41px
+    padding-top: 82px
     margin-left: 13px
     display: -webkit-box
     display: -webkit-flex
@@ -114,8 +102,6 @@ export default {
       
       .-lastname
         font-weight: 600
-
-      .-national
     
     @media (max-width: 360px)
       .-name-age-national
@@ -133,8 +119,6 @@ export default {
       
       .-lastname
         font-weight: 600
-
-      .-national
 
     .-level
       display: flex
