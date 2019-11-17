@@ -1,50 +1,65 @@
 <template>
   <div class="match">
     <l-header :disabled="true" />
-    <div class="-pic">
+    <Vue2InteractDraggable
+      v-if="isVisible"
+      :interact-out-of-sight-x-coordinate="500"
+      :interact-max-rotation="15"
+      :interact-x-threshold="200"
+      :interact-y-threshold="200"
+      :interact-event-bus-events="interactEventBus"
+      interact-block-drag-down
+      @draggedRight="emitAndNext('match')"
+      @draggedLeft="emitAndNext('reject')"
+      @draggedUp="emitAndNext('skip')"
+      class="rounded-borders card card--one">
+        <div class="-pic">
       
-    </div>
-    <div class="-national">
-      <img :src="require('@/assets/brazil.svg')" />
-    </div>
-    <div class="-info">
-      <div class="-name-age-national">
-        <p class="-name">Iago Angelim, 27</p>
-        <p class="-name -lastname">Cavalcante</p>
-      </div>
-      <div class="-play">
-        <l-chips class="-play-chips" :label="'CS:GO'"/>
-        <l-chips class="-play-chips" :label="'LOL'"/>
-        <l-chips class="-play-chips" :label="'FORTNITE'"/>
-        <l-chips class="-play-chips" :label="'PUBG'"/>
-      </div>
-      <div class="-level">
-        <div class="-friendly">
-          <svg xmlns="http://www.w3.org/2000/svg" id="baseline-sentiment_very_satisfied-24px" width="30" height="30" viewBox="0 0 30 30">
-            <path id="Path_85" d="M0 0h30v30H0z" fill="none" data-name="Path 85"/>
-            <circle id="Ellipse_11" cx="1.5" cy="1.5" r="1.5" fill="#be1965" data-name="Ellipse 11" transform="translate(18 10.286)"/>
-            <circle id="Ellipse_12" cx="1.5" cy="1.5" r="1.5" fill="#be1965" data-name="Ellipse 12" transform="translate(9 10.286)"/>
-            <path id="Path_86" d="M14.987 2A13 13 0 1 0 28 15 12.994 12.994 0 0 0 14.987 2zM15 25.4A10.4 10.4 0 1 1 25.4 15 10.4 10.4 0 0 1 15 25.4zm-6.5-7.8a7.1 7.1 0 0 0 6.5 5.2 7.1 7.1 0 0 0 6.5-5.2z" fill="#be1965" data-name="Path 86"/>
-          </svg>
-          <l-chips class="-level-chips" :label="'amigável'"/>
         </div>
-        <div class="-friendly -space">
-          <svg xmlns="http://www.w3.org/2000/svg" id="baseline-school-24px" width="30" height="30" viewBox="0 0 30 30">
-            <path id="Path_87" d="M0 0h30v30H0z" fill="none" data-name="Path 87"/>
-            <path id="Path_88" d="M6.091 16.573v5.333L15 27l8.909-5.093v-5.334L15 21.667zM15 3L1 11l14 8 11.455-6.547v9.213H29V11z" fill="#be1965" data-name="Path 88"/>
-          </svg>
-          <l-chips class="-level-chips" :label="'professor'"/>
+        <div class="-national">
+          <img :src="require('@/assets/brazil.svg')" />
         </div>
-      </div>
-      <div class="-play">
-        <p class="-title">A procura de</p>
-        <l-chips class="-play-chips" :label="'top laner'"/>
-        <l-chips class="-play-chips" :label="'duo'"/>
-      </div>
-    </div>
+        <div class="-info">
+          <div class="-name-age-national">
+            <p class="-name">{{current.name}}, {{current.age}}</p>
+            <p class="-name -lastname">{{current.name}}</p>
+          </div>
+          <div class="-play">
+            <l-chips class="-play-chips" :label="'CS:GO'"/>
+            <l-chips class="-play-chips" :label="'LOL'"/>
+            <l-chips class="-play-chips" :label="'FORTNITE'"/>
+            <l-chips class="-play-chips" :label="'PUBG'"/>
+          </div>
+          <div class="-level">
+            <div class="-friendly">
+              <svg xmlns="http://www.w3.org/2000/svg" id="baseline-sentiment_very_satisfied-24px" width="30" height="30" viewBox="0 0 30 30">
+                <path id="Path_85" d="M0 0h30v30H0z" fill="none" data-name="Path 85"/>
+                <circle id="Ellipse_11" cx="1.5" cy="1.5" r="1.5" fill="#be1965" data-name="Ellipse 11" transform="translate(18 10.286)"/>
+                <circle id="Ellipse_12" cx="1.5" cy="1.5" r="1.5" fill="#be1965" data-name="Ellipse 12" transform="translate(9 10.286)"/>
+                <path id="Path_86" d="M14.987 2A13 13 0 1 0 28 15 12.994 12.994 0 0 0 14.987 2zM15 25.4A10.4 10.4 0 1 1 25.4 15 10.4 10.4 0 0 1 15 25.4zm-6.5-7.8a7.1 7.1 0 0 0 6.5 5.2 7.1 7.1 0 0 0 6.5-5.2z" fill="#be1965" data-name="Path 86"/>
+              </svg>
+              <l-chips class="-level-chips" :label="'amigável'"/>
+            </div>
+            <div class="-friendly -space">
+              <svg xmlns="http://www.w3.org/2000/svg" id="baseline-school-24px" width="30" height="30" viewBox="0 0 30 30">
+                <path id="Path_87" d="M0 0h30v30H0z" fill="none" data-name="Path 87"/>
+                <path id="Path_88" d="M6.091 16.573v5.333L15 27l8.909-5.093v-5.334L15 21.667zM15 3L1 11l14 8 11.455-6.547v9.213H29V11z" fill="#be1965" data-name="Path 88"/>
+              </svg>
+              <l-chips class="-level-chips" :label="'professor'"/>
+            </div>
+          </div>
+          <div class="-play">
+            <p class="-title">A procura de</p>
+            <l-chips class="-play-chips" :label="'top laner'"/>
+            <l-chips class="-play-chips" :label="'duo'"/>
+          </div>
+        </div>
+    </Vue2InteractDraggable>
+
+
     <div class="-decision">
-      <l-fab-button class="-cancel" :color="'-cancel'" :cancel="true" />
-      <l-fab-button :color="'-confirm'" :confirm="true" />
+      <l-fab-button class="-cancel" :color="'-cancel'" :cancel="true" @click="reject"/>
+      <l-fab-button :color="'-confirm'" :confirm="true" @click="match"/>
     </div>
     <div class="-menu">
       <div class="-menu-buttons">
@@ -74,6 +89,12 @@
 import LChips from '@/components/LChips'
 import LFabButton from '@/components/LFabButton'
 import LHeader from '@/components/LHeader'
+import { Vue2InteractDraggable, InteractEventBus } from 'vue2-interact'
+const EVENTS = {
+  MATCH: 'match',
+  SKIP: 'skip',
+  REJECT: 'reject'
+}
 
 export default {
   name: 'Match',
@@ -81,8 +102,59 @@ export default {
     LChips,
     LFabButton,
     LHeader,
+    Vue2InteractDraggable
+  },
+  data: () => ({
+    isVisible: true,
+    index: 0,
+    interactEventBus: {
+      draggedRight: EVENTS.MATCH,
+      draggedLeft: EVENTS.REJECT,
+      draggedUp: EVENTS.SKIP
+    },
+    cards: [
+      { src: 'karina.jpg', name: 'Karina', age: 7 },
+      { src: 'alexander.jpg', name: 'Alexander', age: 5 },
+      { src: 'bona.jpg', name: 'Bona', age: 3 },
+      { src: 'ichi.jpg', name: 'Ichi', age: 7 },
+      { src: 'lloyd.jpg', name: 'Lloyd', age: 4 },
+      { src: 'luiza.jpg', name: 'Luiza', age: 9 },
+      { src: 'max.jpg', name: 'Max', age: 6 },
+      { src: 'mona.jpg', name: 'Mona', age: 3 },
+      { src: 'naru.jpg', name: 'Naru', age: 7 },
+      { src: 'ramdan.jpg', name: 'Ramdan', age: 8 },
+      { src: 'rikki-austin.jpg', name: 'Rikki Austin', age: 3 },
+      { src: 'tucker.jpg', name: 'Tucker', age: 9 },
+      { src: 'uriel.jpg', name: 'Uriel', age: 6 },
+      { src: 'zoe.jpg', name: 'Zoe', age: 2 },
+    ]
+  }),
+  computed: {
+    current() {
+      return this.cards[this.index]
+    },
+    next() {
+      return this.cards[this.index + 1]
+    }
   },
   methods: {
+    match() {
+      InteractEventBus.$emit(EVENTS.MATCH)
+    },
+    reject() {
+      InteractEventBus.$emit(EVENTS.REJECT)
+    },
+    skip() {
+      InteractEventBus.$emit(EVENTS.SKIP)
+    },
+    emitAndNext(event) {
+      this.$emit(event, this.index)
+      setTimeout(() => this.isVisible = false, 200)
+      setTimeout(() => {
+        this.index++
+        this.isVisible = true
+      }, 200)
+    },
     goTo (route) {
       this.$router.push({ name: route })
     }
