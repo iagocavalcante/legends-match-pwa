@@ -1,6 +1,6 @@
 <template>
   <div class="fab">
-    <button class="-button" :class="color">
+    <button class="-button" :class="color" @click="$emit('click', $event)">
       <svg v-if="menu" xmlns="http://www.w3.org/2000/svg" id="baseline-layers-24px" width="33.985" height="33.985" viewBox="0 0 33.985 33.985">
         <path id="Path_81" d="M0 0h33.985v33.985H0z" fill="none" data-name="Path 81"/>
         <path id="Path_82" d="M15.73 25.421L5.294 17.307 3 19.092 15.744 29l12.744-9.912-2.308-1.8-10.45 8.133zm.014-3.6l10.422-8.114 2.322-1.8L15.744 2 3 11.912l2.308 1.8z" fill="#fff" data-name="Path 82" transform="translate(1.248 .832)"/>
