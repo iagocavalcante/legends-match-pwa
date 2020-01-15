@@ -21,6 +21,7 @@
     "cordova-serve-osx": "cross-env CORDOVA_PLATFORM=osx vue-cli-service cordova-serve-osx"
   },
   "dependencies": {
+<<<<<<< HEAD
     "axios": "^0.19.1",
     "core-js": "^2.6.5",
     "http-status": "^1.4.2",
@@ -29,19 +30,26 @@
     "vue-cookie": "^1.1.4",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
+=======
+    "core-js": "3.6.4",
+    "register-service-worker": "1.6.2",
+    "vue": "2.6.11",
+    "vue-router": "3.1.4",
+    "vue2-interact": "0.0.3"
+>>>>>>> ad6079eab419563e57bb37e6c72471ea630582c9
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.0",
-    "@vue/cli-plugin-eslint": "^3.12.0",
-    "@vue/cli-plugin-pwa": "^3.12.0",
-    "@vue/cli-service": "^3.12.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.0",
-    "vue-cli-plugin-cordova": "^2.3.6",
-    "vue-template-compiler": "^2.6.10"
+    "@vue/cli-plugin-babel": "4.1.2",
+    "@vue/cli-plugin-eslint": "4.1.2",
+    "@vue/cli-plugin-pwa": "4.1.2",
+    "@vue/cli-service": "4.1.2",
+    "babel-eslint": "10.0.3",
+    "eslint": "6.8.0",
+    "eslint-plugin-vue": "6.1.2",
+    "node-sass": "4.13.0",
+    "sass-loader": "8.0.2",
+    "vue-cli-plugin-cordova": "2.4.0",
+    "vue-template-compiler": "2.6.11"
   },
   "eslintConfig": {
     "root": true,
