@@ -4,6 +4,21 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'App',
+  beforeCreate () {
+    const existingSession = this.$cookies.get('session')
+
+    if (existingSession && existingSession.length) {
+      const session = JSON.parse(existingSession)
+      this.$store.commit('user', session.user)
+      this.$store.commit('auth', session.tokens)
+    }
+  }
+}
+</script>
+
 <style lang="sass">
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap')
 @import "@/styles/style.sass"

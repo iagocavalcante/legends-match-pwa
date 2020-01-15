@@ -171,12 +171,12 @@ export default {
 
   .-pic
     width: 93vw
-    height: 260px
+    height: 160px
     border-top-left-radius: 5px
     border-top-right-radius: 5px
     border: solid 1px #d6d6d6
     background-color: #ffffff
-    margin-top: 82px
+    margin-top: 10px
     margin-left: 13px
     display: -webkit-box
     display: -webkit-flex

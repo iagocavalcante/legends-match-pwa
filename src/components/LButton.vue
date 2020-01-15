@@ -38,4 +38,4 @@ $outlined: #ffffff
   text-align: center
   color: $outlined
   text-transform: uppercase
-</style>>
+</style>

@@ -3,13 +3,13 @@
     <div class="-login">
       <h1 class="-legends">LEGENDS<b class="-match">MATCH</b></h1>
       <div class="-form-input">
-        <l-input placeholder="Email"/>
+        <l-input placeholder="Email" v-model="email"/>
       </div>
       <div class="-form-input">
-        <l-input placeholder="Senha"/>
+        <l-input placeholder="Senha" v-model="password" type="password"/>
       </div>
       <div class="-form-button">
-        <l-button :buttonText="'entrar'" @click="goTo('match')"/>
+        <l-button :buttonText="'entrar'" @click="signIn()"/>
       </div>
       <div class="-forgot-password">
         <a class="link" href="/register">ou Esqueceu a senha? =[</a>  
@@ -22,9 +22,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import { pick } from 'lodash'
 import LInput from '@/components/LInput'
 import LButton from '@/components/LButton'
+import { mapMutations } from 'vuex'
 
 export default {
   name: 'home',
@@ -32,9 +33,38 @@ export default {
     LInput,
     LButton
   },
+  data: () => ({
+    email: '',
+    password: ''
+  }),
   methods: {
     goTo (route) {
       this.$router.push({ path: route })
+    },
+    ...mapMutations([
+      'user',
+      'auth'
+    ]),
+    async signIn () {
+      const credentials = { email: this.email, password: this.password }
+      const response = await this.$services.auth().signIn( credentials )
+
+      const authHeaders = pick(response.headers,
+                           ['access-token','client','expiry','uid','token-type'])
+
+      const contents = {
+        tokens: authHeaders,
+        user: response.data.data
+      }
+
+      this.auth(contents.tokens)
+      this.user(contents.user)
+
+      this.$cookies.set('session',
+                   JSON.stringify(contents),
+                   { expires: '14D' })
+
+      this.$router.push({ name: 'match' })
     }
   }
 }
