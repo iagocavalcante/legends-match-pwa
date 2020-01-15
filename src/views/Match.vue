@@ -1,8 +1,5 @@
 <template>
   <div class="match">
-<<<<<<< HEAD
-    <div class="-pic">
-=======
     <l-header :disabled="true" />
     <Vue2InteractDraggable
       v-if="isVisible"
@@ -17,7 +14,6 @@
       @draggedUp="emitAndNext('skip')"
       class="rounded-borders card card--one">
         <div class="-pic">
->>>>>>> ad6079eab419563e57bb37e6c72471ea630582c9
       
         </div>
         <div class="-national">
@@ -92,8 +88,6 @@
 <script>
 import LChips from '@/components/LChips'
 import LFabButton from '@/components/LFabButton'
-<<<<<<< HEAD
-=======
 import LHeader from '@/components/LHeader'
 import { Vue2InteractDraggable, InteractEventBus } from 'vue2-interact'
 const EVENTS = {
@@ -101,15 +95,12 @@ const EVENTS = {
   SKIP: 'skip',
   REJECT: 'reject'
 }
->>>>>>> ad6079eab419563e57bb37e6c72471ea630582c9
 
 export default {
   name: 'Match',
   components: {
     LChips,
     LFabButton,
-<<<<<<< HEAD
-=======
     LHeader,
     Vue2InteractDraggable
   },
@@ -145,7 +136,6 @@ export default {
     next() {
       return this.cards[this.index + 1]
     }
->>>>>>> ad6079eab419563e57bb37e6c72471ea630582c9
   },
   methods: {
     match() {
