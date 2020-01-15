@@ -1,6 +1,5 @@
 <template>
   <div class="match">
-    <l-header :disabled="true" />
     <div class="-pic">
       
     </div>
@@ -73,14 +72,12 @@
 <script>
 import LChips from '@/components/LChips'
 import LFabButton from '@/components/LFabButton'
-import LHeader from '@/components/LHeader'
 
 export default {
   name: 'Match',
   components: {
     LChips,
     LFabButton,
-    LHeader,
   },
   methods: {
     goTo (route) {
@@ -99,12 +96,12 @@ export default {
 
   .-pic
     width: 93vw
-    height: 260px
+    height: 160px
     border-top-left-radius: 5px
     border-top-right-radius: 5px
     border: solid 1px #d6d6d6
     background-color: #ffffff
-    margin-top: 82px
+    margin-top: 10px
     margin-left: 13px
     display: -webkit-box
     display: -webkit-flex
