@@ -8,49 +8,25 @@
       <l-chips class="-chips" :label="'Dados Pessoais'"/>
     </div>
     <div class="-form-input">
-      <l-input :placeholder="'Digite o Nome'" :isRegister="true" />
+      <l-input :placeholder="'Digite seu nome completo'" :isRegister="true" v-model="full_name"/>
     </div>
     <div class="-form-input">
-      <l-input :placeholder="'Digite o Nick'" :isRegister="true" />
+      <l-input :placeholder="'Digite o Nick'" :isRegister="true" v-model="nickname"/>
     </div>
     <div class="-form-input">
-      <l-input :placeholder="'Digite sua idade'" :isRegister="true" />
+      <l-input :placeholder="'Digite seu email'" :isRegister="true" v-model="email" />
     </div>
     <div class="-form-input">
-      <l-select
-        :customClass="'-select'"
-        v-model="currentItem"
-        :isRegister="true"
-        :default-selected-value="selectedValue"
-        :option-items="optionsArray"
-        :default-label-text="defaultText"
-        :disable-label-text="1"
-      >
-      </l-select>
-    </div>
-    <div class="-form-input">
-      <l-select
-        :customClass="'-select'"
-        v-model="currentItem"
-        :isRegister="true"
-        :default-selected-value="selectedValue"
-        :option-items="optionsArray"
-        :default-label-text="'Estado'"
-        :disable-label-text="1"
-      >
-      </l-select>
-    </div>
-    <div class="-form-input">
-      <l-input :placeholder="'Digite sua idade'" :isRegister="true" />
+      <l-input :placeholder="'Digite sua data de nascimento'" :isRegister="true" v-model="birthday" />
     </div>
     <div class="-form-input">
       <div class="-form-2">
-        <l-input class="-input" :placeholder="'Digite sua senha'" :isRegister="true" />
-        <l-input class="-input" :placeholder="'Repita sua senha'" :isRegister="true" />
+        <l-input class="-input" :placeholder="'Digite sua senha'" type="password" :isRegister="true" v-model="password"/>
+        <l-input class="-input" :placeholder="'Repita sua senha'" type="password" :isRegister="true" />
       </div>
     </div>
     <div class="-form-input">
-      <l-text-area class="-input" :placeholder="'Digite sua senha'" :isRegister="true" />
+      <l-text-area class="-input" :placeholder="'Fale um pouco sobre você'" :isRegister="true" v-model="bio" />
     </div>
     <div class="-form-input">
       <l-chips class="-chips" :label="'Dados de Jogador'"/>
@@ -58,11 +34,11 @@
     <div class="-form-input">
       <l-select
         :customClass="'-select'"
-        v-model="currentItem"
+        v-model="game"
         :isRegister="true"
-        :default-selected-value="selectedValue"
-        :option-items="optionsArray"
-        :default-label-text="defaultText"
+        :default-selected-value="gameSelected"
+        :option-items="games"
+        :default-label-text="defaultTextGames"
         :disable-label-text="1"
       >
       </l-select>
@@ -76,11 +52,11 @@
     <div class="-form-input">
       <l-select
         :customClass="'-select'"
-        v-model="currentItem"
+        v-model="skill"
         :isRegister="true"
-        :default-selected-value="selectedValue"
-        :option-items="optionsArray"
-        :default-label-text="defaultText"
+        :default-selected-value="skillSelected"
+        :option-items="skills"
+        :default-label-text="defaultTextSkills"
         :disable-label-text="1"
       >
       </l-select>
@@ -94,11 +70,11 @@
     <div class="-form-input">
       <l-select
         :customClass="'-select'"
-        v-model="currentItem"
+        v-model="preference"
         :isRegister="true"
-        :default-selected-value="selectedValue"
-        :option-items="optionsArray"
-        :default-label-text="defaultText"
+        :default-selected-value="preferenceSelected"
+        :option-items="preferences"
+        :default-label-text="defaultTextPreferences"
         :disable-label-text="1"
       >
       </l-select>
@@ -109,24 +85,27 @@
         <l-chips class="-games" :label="'fortnite'"/>
       </div>
     </div>
-    <div class="-form-input">
+    <div class="-form-input" v-if="editProfile">
       <l-chips class="-chips" :label="'vincular contas'"/>
     </div>
     <div class="-form-input">
-      <l-list-view 
-        v-for="(item, index) in listItem"
-        :key="index"
-        :imgUrl="item.avatar"
-        :title="item.statusText"
-        :date="item.dateConnect"
-        :status="item.status"
-      >
-        <template #connect>
-          <l-button :buttonClass="'btn-outlined btn-purple'" :buttonText="'conectar'"/>
-        </template>
-      </l-list-view>
+      <div v-if="editProfile">
+        <l-list-view 
+          v-for="(item, index) in listItem"
+          :key="index"
+          :imgUrl="item.avatar"
+          :title="item.statusText"
+          :date="item.dateConnect"
+          :status="item.status"
+        >
+          <template #connect>
+            <l-button :buttonClass="'btn-outlined btn-purple'" :buttonText="'conectar'"/>
+          </template>
+        </l-list-view>
+
+      </div>
       <div class="-form-input-buttons">
-        <l-button class="-buttons" :buttonClass="'btn-outlined btn-success'" :buttonText="'salvar'"/>
+        <l-button class="-buttons" :buttonClass="'btn-outlined btn-success'" :buttonText="'salvar'" @click="signUp()"/>
         <l-button :buttonClass="'btn-outlined btn-danger'" :buttonText="'cancelar'"/>
       </div>
     </div>
@@ -156,27 +135,25 @@ export default {
     LUploadButton
   },
 	data: () => ({
-    defaultText: 'País',
-		currentItem: '',
-		selectedValue: '',
-    optionsArray: [
-      {
-        id: '1', 
-        text: 'Apple'
-      },
-      {
-        id: '2', 
-        text: 'Banana'
-      },
-      {
-        id: '3', 
-        text: 'Mango'
-      },
-      {
-        id: '4', 
-        text: 'Watermelon'
-      }
-    ],
+    editProfile: false,
+    defaultTextGames: 'Jogos',
+    defaultTextSkills: 'Posições',
+    defaultTextPreferences: 'Tipo de Jogo',
+		game: '',
+		gameSelected: '',
+		skillSelected: '',
+		skill: '',
+    preferenceSelected: '',
+    email: '',
+    password: '',
+    full_name: '',
+    nickname: '',
+    birthday: '',
+    bio: '',
+		preference: '',
+    games: ['LOL', 'CS:GO', 'RPG DE MESA'],
+    skills: ['AD CARRY', 'SUPORTE', 'TOP', 'MID', 'JUNGLER', 'SNIPER', 'CAPITÃO', 'LUKER', 'ENTRY FRAGGER', 'MESTRE DE MESA', 'JOGADORES'],
+    preferences: ['RANKED', 'NORMAL', 'TIME'],
     listItem: [
       {
         avatar: 'iconmonstr-steam-4.png',
@@ -197,7 +174,31 @@ export default {
         dateConnect: '--'
       }
     ]
-  })
+  }),
+  methods: {
+    async signUp () {
+      const user = {
+        email: this.email,
+        full_name: this.full_name,
+        nickname: this.nickname,
+        password: this.password,
+        birthday: this.birthday,
+        bio: this.bio,
+        games: this.games,
+        skills: this.skills,
+        preferences: this.preferences,
+        latitude: -1.44265068,
+        longitude: -48.47982824,
+      }
+
+      try {
+        const response = await this.$services.auth().signUp(user)
+        console.log(response)
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
 }
 </script>
 
