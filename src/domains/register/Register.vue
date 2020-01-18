@@ -17,7 +17,7 @@
       />
       <div class="errors-form-messages" v-if="$v.user.full_name.$error">
         <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
-          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+          <li v-if="!$v.user.full_name.required">Nome completo é obrigatório.</li>
         </ul>
       </div>
     </div>
@@ -29,9 +29,9 @@
         :verifiyError="$v.user.nickname.$error"
         @blur="$v.user.$touch()"
       />
-      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
-        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
-          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+      <div class="errors-form-messages" v-if="$v.user.nickname.$error">
+        <ul class="contactForm__messages" v-if="$v.user.nickname.$error">
+          <li v-if="!$v.user.nickname.required">Nickname é obrigatório.</li>
         </ul>
       </div>
     </div>
@@ -43,9 +43,9 @@
         :verifiyError="$v.user.email.$error"
         @blur="$v.user.$touch()"
       />
-      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
-        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
-          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+      <div class="errors-form-messages" v-if="$v.user.email.$error">
+        <ul class="contactForm__messages" v-if="$v.user.email.$error">
+          <li v-if="!$v.user.email.required">Email é obrigatório.</li>
         </ul>
       </div>
     </div>
@@ -57,9 +57,9 @@
         :verifiyError="$v.user.birthday.$error"
         @blur="$v.user.$touch()"
       />
-      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
-        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
-          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+      <div class="errors-form-messages" v-if="$v.user.birthday.$error">
+        <ul class="contactForm__messages" v-if="$v.user.birthday.$error">
+          <li v-if="!$v.user.birthday.required">Data de nascimento é obrigatório.</li>
         </ul>
       </div>
     </div>
@@ -73,11 +73,6 @@
           :verifiyError="$v.user.password.$error"
           @blur="$v.user.$touch()"
         />
-        <div class="errors-form-messages" v-if="$v.user.full_name.$error">
-          <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
-            <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
-          </ul>
-        </div>
         <l-input class="-input"
           placeholder="Repita sua senha"
           type="password"
@@ -86,9 +81,16 @@
           :verifiyError="$v.user.confirmPassword.$error"
           @blur="$v.user.$touch()"
         />
-        <div class="errors-form-messages" v-if="$v.user.full_name.$error">
-          <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
-            <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+        <div class="errors-form-messages" v-if="$v.user.password.$error">
+          <ul class="contactForm__messages" v-if="$v.user.password.$error">
+            <li v-if="!$v.user.password.required">Senha é obrigatório.</li>
+            <li v-if="!$v.user.password.minLength">Senha deve ter no mínimo 8 dígitos.</li>
+          </ul>
+        </div>
+        <div class="errors-form-messages" v-if="$v.user.confirmPassword.$error">
+          <ul class="contactForm__messages" v-if="$v.user.confirmPassword.$error">
+            <li v-if="!$v.user.confirmPassword.required">Confirmar a senha é obrigatório.</li>
+            <li v-if="!$v.user.confirmPassword.sameAs">Os campos de senha devem ser iguais.</li>
           </ul>
         </div>
       </div>
@@ -101,9 +103,9 @@
         :verifiyError="$v.user.bio.$error"
         @blur="$v.user.$touch()"
       />
-      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
-        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
-          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+      <div class="errors-form-messages" v-if="$v.user.bio.$error">
+        <ul class="contactForm__messages" v-if="$v.user.bio.$error">
+          <li v-if="!$v.user.bio.required">Bio é obrigatório.</li>
         </ul>
       </div>
     </div>
