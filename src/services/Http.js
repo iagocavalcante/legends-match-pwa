@@ -3,6 +3,7 @@ import { pick } from 'lodash'
 import store from '@/store'
 import Router from '@/router'
 import vueCookie from 'vue-cookie'
+import status from 'http-status'
 
 export const Http = axios.create({
   baseURL: `${process.env.VUE_APP_HOST}`

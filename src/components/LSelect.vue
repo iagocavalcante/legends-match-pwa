@@ -15,11 +15,11 @@
     </option>
     <option
       v-for="item in optionItems"
-      :value="item.id ? item.id : item"
-      :key="item.id ? defaultSelectedValue == item.id : defaultSelectedValue == item.id"
-      :selected="item.id ? defaultSelectedValue == item.id : defaultSelectedValue == item.id"
+      :value="item"
+      :key="defaultSelectedValue == item"
+      :selected="defaultSelectedValue == item"
     >
-      {{ defaultSelectedValue }}{{ item.text ? item.text : item }}
+      {{ item }}
     </option>
   </select>
 </template>

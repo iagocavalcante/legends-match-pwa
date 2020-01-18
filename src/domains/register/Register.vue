@@ -8,25 +8,104 @@
       <l-chips class="-chips" :label="'Dados Pessoais'"/>
     </div>
     <div class="-form-input">
-      <l-input :placeholder="'Digite seu nome completo'" :isRegister="true" v-model="full_name"/>
-    </div>
-    <div class="-form-input">
-      <l-input :placeholder="'Digite o Nick'" :isRegister="true" v-model="nickname"/>
-    </div>
-    <div class="-form-input">
-      <l-input :placeholder="'Digite seu email'" :isRegister="true" v-model="email" />
-    </div>
-    <div class="-form-input">
-      <l-input :placeholder="'Digite sua data de nascimento'" :isRegister="true" v-model="birthday" />
-    </div>
-    <div class="-form-input">
-      <div class="-form-2">
-        <l-input class="-input" :placeholder="'Digite sua senha'" type="password" :isRegister="true" v-model="password"/>
-        <l-input class="-input" :placeholder="'Repita sua senha'" type="password" :isRegister="true" />
+      <l-input
+        placeholder="Digite seu nome completo"
+        :isRegister="true"
+        v-model="user.full_name"
+        :verifiyError="$v.user.full_name.$error"
+        @blur="$v.user.$touch()"
+      />
+      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
+        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
+          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+        </ul>
       </div>
     </div>
     <div class="-form-input">
-      <l-text-area class="-input" :placeholder="'Fale um pouco sobre você'" :isRegister="true" v-model="bio" />
+      <l-input
+        placeholder="Digite o Nick"
+        :isRegister="true"
+        v-model="user.nickname"
+        :verifiyError="$v.user.nickname.$error"
+        @blur="$v.user.$touch()"
+      />
+      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
+        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
+          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="-form-input">
+      <l-input
+        placeholder="Digite seu email"
+        :isRegister="true"
+        v-model="user.email"
+        :verifiyError="$v.user.email.$error"
+        @blur="$v.user.$touch()"
+      />
+      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
+        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
+          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="-form-input">
+      <l-input
+        placeholder="Digite sua data de nascimento"
+        :isRegister="true"
+        v-model="user.birthday"
+        :verifiyError="$v.user.birthday.$error"
+        @blur="$v.user.$touch()"
+      />
+      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
+        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
+          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="-form-input">
+      <div class="-form-2">
+        <l-input class="-input"
+          placeholder="Digite sua senha"
+          type="password"
+          :isRegister="true"
+          v-model="user.password"
+          :verifiyError="$v.user.password.$error"
+          @blur="$v.user.$touch()"
+        />
+        <div class="errors-form-messages" v-if="$v.user.full_name.$error">
+          <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
+            <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+          </ul>
+        </div>
+        <l-input class="-input"
+          placeholder="Repita sua senha"
+          type="password"
+          :isRegister="true"
+          v-model="user.confirmPassword"
+          :verifiyError="$v.user.confirmPassword.$error"
+          @blur="$v.user.$touch()"
+        />
+        <div class="errors-form-messages" v-if="$v.user.full_name.$error">
+          <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
+            <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="-form-input">
+      <l-text-area class="-input"
+        placeholder="Fale um pouco sobre você!!"
+        :isRegister="true"
+        v-model="user.bio"
+        :verifiyError="$v.user.bio.$error"
+        @blur="$v.user.$touch()"
+      />
+      <div class="errors-form-messages" v-if="$v.user.full_name.$error">
+        <ul class="contactForm__messages" v-if="$v.user.full_name.$error">
+          <li v-if="!$v.user.full_name.required">* O campo nome é obrigatório.</li>
+        </ul>
+      </div>
     </div>
     <div class="-form-input">
       <l-chips class="-chips" :label="'Dados de Jogador'"/>
@@ -37,7 +116,7 @@
         v-model="game"
         :isRegister="true"
         :default-selected-value="gameSelected"
-        :option-items="games"
+        :option-items="user.games"
         :default-label-text="defaultTextGames"
         :disable-label-text="1"
       >
@@ -52,10 +131,10 @@
     <div class="-form-input">
       <l-select
         :customClass="'-select'"
-        v-model="skill"
+        v-model="skillSelected"
         :isRegister="true"
         :default-selected-value="skillSelected"
-        :option-items="skills"
+        :option-items="user.skills"
         :default-label-text="defaultTextSkills"
         :disable-label-text="1"
       >
@@ -73,7 +152,7 @@
         v-model="preference"
         :isRegister="true"
         :default-selected-value="preferenceSelected"
-        :option-items="preferences"
+        :option-items="user.preferences"
         :default-label-text="defaultTextPreferences"
         :disable-label-text="1"
       >
@@ -121,9 +200,13 @@ import LListView from '@/components/LListView'
 import LSelect from '@/components/LSelect'
 import LTextArea from '@/components/LTextArea'
 import LUploadButton from '@/components/LUploadButton'
+import formErrors from '@/mixins/formErrors.mixin'
+import notification from '@/mixins/notifications.mixin'
+import validations from './mixins/validations.mixin'
 
 export default {
   name: 'register',
+  mixins: [notification, formErrors, validations],
   components: {
     LButton,
     LChips,
@@ -144,16 +227,18 @@ export default {
 		skillSelected: '',
 		skill: '',
     preferenceSelected: '',
-    email: '',
-    password: '',
-    full_name: '',
-    nickname: '',
-    birthday: '',
-    bio: '',
-		preference: '',
-    games: ['LOL', 'CS:GO', 'RPG DE MESA'],
-    skills: ['AD CARRY', 'SUPORTE', 'TOP', 'MID', 'JUNGLER', 'SNIPER', 'CAPITÃO', 'LUKER', 'ENTRY FRAGGER', 'MESTRE DE MESA', 'JOGADORES'],
-    preferences: ['RANKED', 'NORMAL', 'TIME'],
+    preference: '',
+    user: {
+      email: '',
+      password: '',
+      full_name: '',
+      nickname: '',
+      birthday: '',
+      bio: '',
+      games: ['LOL', 'CS:GO', 'RPG DE MESA'],
+      skills: ['AD CARRY', 'SUPORTE', 'TOP', 'MID', 'JUNGLER', 'SNIPER', 'CAPITÃO', 'LUKER', 'ENTRY FRAGGER', 'MESTRE DE MESA', 'JOGADORES'],
+      preferences: ['RANKED', 'NORMAL', 'TIME']
+    },
     listItem: [
       {
         avatar: 'iconmonstr-steam-4.png',
@@ -177,6 +262,18 @@ export default {
   }),
   methods: {
     async signUp () {
+      const fields = [this.$v.user]
+      try {
+        await this.verifyErrorsForm(fields)
+      } catch (error) {
+        this.errorMsg(
+          'Usuário',
+          'Não foi possivel realizar o cadastro, verifique os erros no formulário',
+          'topCenter'
+        )
+        return
+      }
+      
       const user = {
         email: this.email,
         full_name: this.full_name,
@@ -193,9 +290,19 @@ export default {
 
       try {
         const response = await this.$services.auth().signUp(user)
-        console.log(response)
+        this.resetData()
+        this.$v.$reset()
+        this.successMsg(
+          `${response.data.data.nickname}`,
+          `seu cadastro foi realizado, em poucos instantes, enviaremos um email para validar sua conta!`,
+          'topCenter'
+        )
       } catch (e) {
-        console.log(e)
+        this.errorMsg(
+          'Usuário',
+          `Não foi possivel realizar o cadastro, ${e}`,
+          'topCenter'
+        )
       }
     }
   }
