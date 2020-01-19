@@ -1,34 +1,31 @@
 <template>
-  <select
-    v-model="currentOption"
-    class="legends-input"
+  <multiselect
+    :options="optionItems"
+    :multiple="true"
+    :closeOnSelect="false"
+    :clearOnSelect="false"
+    :preserveSearch="false"
+    :placeholder="defaultLabelText"
+    :preselectFirst="false"
+    :searchable="false"
+    :value="value"
+    :taggable="false"
     :class="isRegister ? '-register' : ''"
-    @input="$emit('input', $event.target.value)"
-    @change="onSelectedEvent(currentOption)"
+    @input="$emit('input', $event)"
   >
-    <option
-      value=""
-      v-if="defaultLabelText != null && defaultLabelText.length > 0"
-      :disabled="disableLabelText == 1"
-    >
-      {{ defaultLabelText }}
-    </option>
-    <option
-      v-for="item in optionItems"
-      :value="item"
-      :key="defaultSelectedValue == item"
-      :selected="defaultSelectedValue == item"
-    >
-      {{ item }}
-    </option>
-  </select>
+  </multiselect>
 </template>
 
 <script>
+import Multiselect from 'vue-multiselect'
+
 export default {
   name: 'LSelect',
+  components: {
+    Multiselect
+  },
   props: {
-		value: String,
+		value: Array,
 		customClass: String,
 		optionItems: Array,
 		disableLabelText: Number,
@@ -40,20 +37,6 @@ export default {
       required: false,
       default: false
     }
-	},
-	
-	data: () => ({
-    currentOption: ''
-  }),
-	
-	watch: {
-		value: (newValue) => {
-			this.currentOption = newValue;
-		}
-	},
-	
-	mounted () {
-		this.currentOption = this.defaultSelectedValue;
 	}
 }
 </script>
@@ -61,6 +44,11 @@ export default {
 <style lang="sass" scoped>
 $lipstick: rgb(190, 25, 101)
 $purple: #633280
+
+.multiselect__option--highlight 
+  background: $purple
+  outline: none
+  color: #fff
 
 .-register
   width: 100%
@@ -71,4 +59,36 @@ $purple: #633280
   background-position-x: 100% - 2
   border-radius: 5px
   border: 2px solid $purple
+</style>
+
+<style lang="sass">
+$lipstick: rgb(190, 25, 101)
+$purple: #633280
+
+.multiselect__option--highlight 
+  background: $purple
+  outline: none
+  color: #fff
+
+.multiselect__option--highlight::after 
+  background: $purple
+  color: #fff
+
+.multiselect__tag-icon::after
+  color: #fff
+
+.multiselect__tag
+  position: relative
+  display: inline-block
+  padding: 4px 26px 4px 10px
+  border-radius: 5px
+  margin-right: 10px
+  color: #fff
+  line-height: 1
+  background: $purple
+  margin-bottom: 5px
+  white-space: nowrap
+  overflow: hidden
+  max-width: 100%
+  text-overflow: ellipsis
 </style>
