@@ -2,7 +2,11 @@
   <div class="register">
     <l-header />
     <div class="-form-input">
-      <l-upload-button class="-upload"/>
+      <l-upload-button
+        class="-upload"
+        @handleImage="handleImage"
+        :image="image"
+      />
     </div>
     <div class="-form-input">
       <l-chips class="-chips" :label="'Dados Pessoais'"/>
@@ -115,55 +119,55 @@
     <div class="-form-input">
       <l-select
         :customClass="'-select'"
-        v-model="game"
+        v-model="user.games"
         :isRegister="true"
-        :default-selected-value="gameSelected"
-        :option-items="user.games"
-        :default-label-text="defaultTextGames"
-        :disable-label-text="1"
+        :optionItems="gamesOptions"
+        :defaultLabelText="defaultTextGames"
       >
       </l-select>
       <div class="-form-input">
-        <l-chips class="-games" :label="'CS:GO'"/>
-        <l-chips class="-games" :label="'LOL'"/>
-        <l-chips class="-games" :label="'pubg'"/>
-        <l-chips class="-games" :label="'fortnite'"/>
+        <l-chips
+          class="-games"
+          :label="game"
+          :key="index"
+          v-for="(game, index) in user.games"
+        />
       </div>
     </div>
     <div class="-form-input">
       <l-select
         :customClass="'-select'"
-        v-model="skillSelected"
+        v-model="user.skills"
         :isRegister="true"
-        :default-selected-value="skillSelected"
-        :option-items="user.skills"
-        :default-label-text="defaultTextSkills"
-        :disable-label-text="1"
+        :optionItems="skillsOptions"
+        :defaultLabelText="defaultTextSkills"
       >
       </l-select>
       <div class="-form-input">
-        <l-chips class="-games" :label="'CS:GO'"/>
-        <l-chips class="-games" :label="'LOL'"/>
-        <l-chips class="-games" :label="'pubg'"/>
-        <l-chips class="-games" :label="'fortnite'"/>
+        <l-chips
+          class="-games"
+          :label="skill"
+          :key="index"
+          v-for="(skill, index) in user.skills"
+        />
       </div>
     </div>
     <div class="-form-input">
       <l-select
         :customClass="'-select'"
-        v-model="preference"
+        v-model="user.preferences"
         :isRegister="true"
-        :default-selected-value="preferenceSelected"
-        :option-items="user.preferences"
-        :default-label-text="defaultTextPreferences"
-        :disable-label-text="1"
+        :optionItems="preferencesOptions"
+        :defaultLabelText="defaultTextPreferences"
       >
       </l-select>
       <div class="-form-input">
-        <l-chips class="-games" :label="'CS:GO'"/>
-        <l-chips class="-games" :label="'LOL'"/>
-        <l-chips class="-games" :label="'pubg'"/>
-        <l-chips class="-games" :label="'fortnite'"/>
+        <l-chips
+          class="-games"
+          :label="preference"
+          :key="index"
+          v-for="(preference, index) in user.preferences"
+        />
       </div>
     </div>
     <div class="-form-input" v-if="editProfile">
@@ -224,12 +228,10 @@ export default {
     defaultTextGames: 'Jogos',
     defaultTextSkills: 'Posições',
     defaultTextPreferences: 'Tipo de Jogo',
-		game: '',
-		gameSelected: '',
-		skillSelected: '',
-		skill: '',
-    preferenceSelected: '',
-    preference: '',
+    image: '',
+    gamesOptions: ['LOL', 'CS:GO', 'RPG DE MESA'],
+    skillsOptions: ['AD CARRY', 'SUPORTE', 'TOP', 'MID', 'JUNGLER', 'SNIPER', 'CAPITÃO', 'LUKER', 'ENTRY FRAGGER', 'MESTRE DE MESA', 'JOGADORES'],
+    preferencesOptions: ['RANKED', 'NORMAL', 'TIME'],
     user: {
       email: '',
       password: '',
@@ -237,9 +239,9 @@ export default {
       nickname: '',
       birthday: '',
       bio: '',
-      games: ['LOL', 'CS:GO', 'RPG DE MESA'],
-      skills: ['AD CARRY', 'SUPORTE', 'TOP', 'MID', 'JUNGLER', 'SNIPER', 'CAPITÃO', 'LUKER', 'ENTRY FRAGGER', 'MESTRE DE MESA', 'JOGADORES'],
-      preferences: ['RANKED', 'NORMAL', 'TIME']
+      games: [],
+      skills: [],
+      preferences: []
     },
     listItem: [
       {
@@ -277,15 +279,7 @@ export default {
       }
       
       const user = {
-        email: this.email,
-        full_name: this.full_name,
-        nickname: this.nickname,
-        password: this.password,
-        birthday: this.birthday,
-        bio: this.bio,
-        games: this.games,
-        skills: this.skills,
-        preferences: this.preferences,
+        ...this.user,
         latitude: -1.44265068,
         longitude: -48.47982824,
       }
@@ -306,6 +300,20 @@ export default {
           'topCenter'
         )
       }
+    },
+    handleImage(e) {
+      const uploadedFile = e.target.files[0];
+      this.fileToBase64(uploadedFile).then(image => {
+        this.image = image
+      });
+    },
+    fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
     }
   }
 }

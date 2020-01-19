@@ -9,6 +9,7 @@ import VueNotifications from 'vue-notifications'
 import iziToast from 'izitoast'
 import Vuelidate from 'vuelidate'
 import 'izitoast/dist/css/iziToast.min.css'
+import 'vue-multiselect/dist/vue-multiselect.min.css'
 
 const messageSize = 20
 const titleSize = 22
