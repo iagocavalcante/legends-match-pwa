@@ -1,4 +1,4 @@
-import Login from '@/views/Login'
+import Login from '@/domains/Login'
 
 export const routes = [
   {
@@ -18,7 +18,7 @@ export const routes = [
     // route level code-splitting
     // this generates a separate chunk (register.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "register" */ '@/views/Register')
+    component: () => import(/* webpackChunkName: "register" */ '@/domains/register/Register')
   },
   {
     path: '/location',
@@ -29,7 +29,7 @@ export const routes = [
     // route level code-splitting
     // this generates a separate chunk (register.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "register" */ '@/views/Location')
+    component: () => import(/* webpackChunkName: "register" */ '@/domains/Location')
   },
   {
     path: '/profile',
@@ -40,7 +40,7 @@ export const routes = [
     // route level code-splitting
     // this generates a separate chunk (register.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "register" */ '@/views/Profile')
+    component: () => import(/* webpackChunkName: "register" */ '@/domains/Profile')
   },
   {
     path: '/match',
@@ -51,7 +51,7 @@ export const routes = [
     // route level code-splitting
     // this generates a separate chunk (register.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "register" */ '@/views/Match')
+    component: () => import(/* webpackChunkName: "register" */ '@/domains/Match')
   },
   {
     path: '/chat',
@@ -62,7 +62,7 @@ export const routes = [
     // route level code-splitting
     // this generates a separate chunk (register.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "register" */ '@/views/ChatHome')
+    component: () => import(/* webpackChunkName: "register" */ '@/domains/ChatHome')
   },
   {
     path: '/chat/:id',
@@ -73,6 +73,6 @@ export const routes = [
     // route level code-splitting
     // this generates a separate chunk (register.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "register" */ '@/views/Chat')
+    component: () => import(/* webpackChunkName: "register" */ '@/domains/Chat')
   }
 ]

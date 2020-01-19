@@ -74,4 +74,9 @@ $purple: #633280
   box-shadow: 0 0 5px rgba(190, 25, 101, 1)
   padding: 3px 0px 3px 10px
   border: 1px solid rgb(190, 25, 101)
+
+.legends-input-error:focus
+  border: 1px solid #ff0000
+  border-left-width: 7px
+  padding-left: 28px
 </style>

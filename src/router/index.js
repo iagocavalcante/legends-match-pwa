@@ -18,9 +18,9 @@ Router.beforeEach((to, from, next) => {
   const isAuthenticated = store.getters['isAuthenticated']
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   const recordName = to.name
-  if (requiresAuth && isAuthenticated) {
+  if (requiresAuth && !isAuthenticated) {
     next('/')
-  } else if (!isAuthenticated && (recordName === 'login' || recordName === 'register')) {
+  } else if (isAuthenticated && (recordName === 'login' || recordName === 'register')) {
     next('/match')
   } else {
     next()
