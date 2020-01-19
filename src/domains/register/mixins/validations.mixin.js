@@ -9,7 +9,10 @@ export default {
       this.user.password = ''
       this.user.confirmPassword = ''
       this.user.bio = ''
-      this.user.birthday = ''
+      this.user.age = ''
+      this.user.games = []
+      this.user.skills = []
+      this.user.preferences = []
     }
   },
   validations: {
@@ -35,7 +38,7 @@ export default {
       bio: {
         required
       },
-      birthday: {
+      age: {
         required
       },
     }

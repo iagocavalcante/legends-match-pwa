@@ -55,15 +55,16 @@
     </div>
     <div class="-form-input">
       <l-input
-        placeholder="Digite sua data de nascimento"
+        placeholder="Digite sua idade"
+        type="number"
         :isRegister="true"
-        v-model="user.birthday"
-        :verifiyError="$v.user.birthday.$error"
+        v-model="user.age"
+        :verifiyError="$v.user.age.$error"
         @blur="$v.user.$touch()"
       />
-      <div class="errors-form-messages" v-if="$v.user.birthday.$error">
-        <ul class="contactForm__messages" v-if="$v.user.birthday.$error">
-          <li v-if="!$v.user.birthday.required">Data de nascimento é obrigatório.</li>
+      <div class="errors-form-messages" v-if="$v.user.age.$error">
+        <ul class="contactForm__messages" v-if="$v.user.age.$error">
+          <li v-if="!$v.user.age.required">Data de nascimento é obrigatório.</li>
         </ul>
       </div>
     </div>
@@ -237,7 +238,7 @@ export default {
       password: '',
       full_name: '',
       nickname: '',
-      birthday: '',
+      age: '',
       bio: '',
       games: [],
       skills: [],
