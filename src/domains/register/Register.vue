@@ -122,8 +122,8 @@
         :customClass="'-select'"
         v-model="user.games"
         :isRegister="true"
-        :optionItems="gamesOptions"
-        :defaultLabelText="defaultTextGames"
+        :optionItems="$options.gamesOptions"
+        :defaultLabelText="$options.defaultTextGames"
       >
       </l-select>
       <div class="-form-input">
@@ -140,8 +140,8 @@
         :customClass="'-select'"
         v-model="user.skills"
         :isRegister="true"
-        :optionItems="skillsOptions"
-        :defaultLabelText="defaultTextSkills"
+        :optionItems="$options.skillsOptions"
+        :defaultLabelText="$options.defaultTextSkills"
       >
       </l-select>
       <div class="-form-input">
@@ -158,8 +158,8 @@
         :customClass="'-select'"
         v-model="user.preferences"
         :isRegister="true"
-        :optionItems="preferencesOptions"
-        :defaultLabelText="defaultTextPreferences"
+        :optionItems="$options.preferencesOptions"
+        :defaultLabelText="$options.defaultTextPreferences"
       >
       </l-select>
       <div class="-form-input">
@@ -210,6 +210,7 @@ import LUploadButton from '@/components/LUploadButton'
 import formErrors from '@/mixins/formErrors.mixin'
 import notification from '@/mixins/notifications.mixin'
 import validations from './mixins/validations.mixin'
+import cloneDeep from 'lodash/fp/cloneDeep'
 
 export default {
   name: 'register',
@@ -224,22 +225,35 @@ export default {
     LTextArea,
     LUploadButton
   },
+  gamesOptions: ['LOL', 'CS:GO', 'RPG DE MESA'],
+  skillsOptions: [
+    'AD CARRY',
+    'SUPORTE',
+    'TOP',
+    'MID',
+    'JUNGLER',
+    'SNIPER',
+    'CAPITÃO',
+    'LUKER',
+    'ENTRY FRAGGER',
+    'MESTRE DE MESA',
+    'JOGADORES'
+  ],
+  preferencesOptions: ['RANKED', 'NORMAL', 'TIME'],
+  defaultTextGames: 'Jogos',
+  defaultTextSkills: 'Posições',
+  defaultTextPreferences: 'Tipo de Jogo',
 	data: () => ({
     editProfile: false,
-    defaultTextGames: 'Jogos',
-    defaultTextSkills: 'Posições',
-    defaultTextPreferences: 'Tipo de Jogo',
     image: '',
-    gamesOptions: ['LOL', 'CS:GO', 'RPG DE MESA'],
-    skillsOptions: ['AD CARRY', 'SUPORTE', 'TOP', 'MID', 'JUNGLER', 'SNIPER', 'CAPITÃO', 'LUKER', 'ENTRY FRAGGER', 'MESTRE DE MESA', 'JOGADORES'],
-    preferencesOptions: ['RANKED', 'NORMAL', 'TIME'],
     user: {
       email: '',
-      password: '',
       full_name: '',
       nickname: '',
-      age: '',
+      password: '',
+      confirmPassword: '',
       bio: '',
+      age: '',
       games: [],
       skills: [],
       preferences: []
@@ -278,29 +292,31 @@ export default {
         )
         return
       }
+
+      const cloneUser = cloneDeep(this.user)
       
       const user = {
-        ...this.user,
+        ...cloneUser,
         latitude: -1.44265068,
         longitude: -48.47982824,
       }
 
-      try {
-        const response = await this.$services.auth().signUp(user)
-        this.resetData()
-        this.$v.$reset()
-        this.successMsg(
-          `${response.data.data.nickname}`,
-          `seu cadastro foi realizado, em poucos instantes, enviaremos um email para validar sua conta!`,
-          'topCenter'
-        )
-      } catch (e) {
-        this.errorMsg(
-          'Usuário',
-          `Não foi possivel realizar o cadastro, ${e}`,
-          'topCenter'
-        )
-      }
+      const response = await this.$services.auth().signUp(user)
+        .catch(error => {
+          this.errorMsg(
+            'Usuário',
+            `Não foi possivel realizar o cadastro, ${error}`,
+            'topCenter'
+          )
+        })
+
+      this.resetUserData()
+      this.$v.$reset()
+      this.successMsg(
+        `${response.data.data.nickname}`,
+        `seu cadastro foi realizado, em poucos instantes, enviaremos um email para validar sua conta!`,
+        'topCenter'
+      )
     },
     handleImage(e) {
       const uploadedFile = e.target.files[0];

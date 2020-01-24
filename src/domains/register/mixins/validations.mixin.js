@@ -1,18 +1,22 @@
 import { required, email, minLength, sameAs } from 'vuelidate/lib/validators'
 
+const defaultUser = () => ({
+  email: '',
+  full_name: '',
+  nickname: '',
+  password: '',
+  confirmPassword: '',
+  bio: '',
+  age: '',
+  games: [],
+  skills: [],
+  preferences: []
+})
+
 export default {
   methods: {
-    resetData () {
-      this.user.email = ''
-      this.user.full_name = ''
-      this.user.nickname = ''
-      this.user.password = ''
-      this.user.confirmPassword = ''
-      this.user.bio = ''
-      this.user.age = ''
-      this.user.games = []
-      this.user.skills = []
-      this.user.preferences = []
+    resetUserData () {
+      this.user = defaultUser()
     }
   },
   validations: {

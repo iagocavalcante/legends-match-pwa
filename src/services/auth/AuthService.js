@@ -17,7 +17,7 @@ export default class AuthService extends Api {
   
   signUp = async ($data) => {
     try {
-      const response = await this.http.post(`${this.api}`, $data)
+      const response = await this.http.post(this.api, $data)
       return  response
     } catch (error) {
       throw ResponseService(error, 'create')
